@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+# shellcheck disable=SC1091
+source /usr/local/lib/log.sh
+
+/usr/local/bin/gomplate -o /usr/share/elasticsearch/config/elasticsearch.yml -f /etc/templates/elasticsearch.yml.tmpl
+/usr/local/bin/gomplate -o /usr/share/elasticsearch/config/jvm.options -f /etc/templates/jvm.options.tmpl
+/usr/local/bin/gomplate -o /usr/share/elasticsearch/config/log4j2.properties -f /etc/templates/log4j2.properties.tmpl
+
+chmod 0660 /usr/share/elasticsearch/config/elasticsearch.yml
+chmod 0660 /usr/share/elasticsearch/config/jvm.options
+chmod 0660 /usr/share/elasticsearch/config/log4j2.properties
+
+log_info "Start elasticsearch ...\n"
+exec env ELASTIC_PASSWORD="$ELASTICSEARCH_PASSWORD" /usr/local/bin/docker-entrypoint.sh
