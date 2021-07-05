@@ -43,6 +43,8 @@ network:
 path:
   data: /usr/share/elasticsearch/data
   logs: /usr/share/elasticsearch/logs
+  repo:
+    - /usr/share/elasticsearch/backup
 
 bootstrap:
   memory_lock: {{ getenv "ELASTICSEARCH_BOOTSTRAP_MEMORY_LOCK" "true" | conv.Bool }}

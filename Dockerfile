@@ -19,6 +19,10 @@ USER 0
 RUN yum install -y -q wget curl && \
     curl -SsL -o /usr/local/bin/gomplate "https://github.com/hairyhenderson/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64-slim" && \
     chmod 755 /usr/local/bin/gomplate && \
+    mkdir -p /usr/share/elasticsearch/backup && \
+    chown -R elasticsearch:root /usr/share/elasticsearch/backup && \
+    chmod 755 /usr/share/elasticsearch/backup && \
+    /usr/share/elasticsearch/bin/elasticsearch-plugin install repository-s3 -b -s && \
     yum clean all
 
 USER 1000

@@ -13,6 +13,7 @@ Custom Docker image for [ElasticSearch](https://github.com/elastic/elasticsearch
 ## Volumes
 
 - /usr/share/elasticsearch/data
+- /usr/share/elasticsearch/backup
 - /usr/share/elasticsearch/log
 
 ## Environment Variables
@@ -51,6 +52,9 @@ ELASTICSEARCH_PASSWORD=
 
 ELASTICSEARCH_ROOT_LOG_LEVEL=info
 ELASTICSEARCH_JVM_HEAP_SIZE=512m
+
+ELASTICSEARCH_S3_CLIENT_DEFAULT_ACCESS_KEY=
+ELASTICSEARCH_S3_CLIENT_DEFAULT_SECRET_KEY=
 ```
 
 ## Build

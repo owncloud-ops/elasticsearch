@@ -13,5 +13,13 @@ chmod 0660 /usr/share/elasticsearch/config/elasticsearch.yml
 chmod 0660 /usr/share/elasticsearch/config/jvm.options
 chmod 0660 /usr/share/elasticsearch/config/log4j2.properties
 
-log_info "Start elasticsearch ...\n"
+if [ -n "$ELASTICSEARCH_S3_CLIENT_DEFAULT_ACCESS_KEY" ] && [ -n "$ELASTICSEARCH_S3_CLIENT_DEFAULT_SECRET_KEY" ]; then
+    log_info "Add S3 secrets to keystore"
+    echo "$ELASTICSEARCH_S3_CLIENT_DEFAULT_ACCESS_KEY" | /usr/share/elasticsearch/bin/elasticsearch-keystore add -f -s -x s3.client.default.access_key
+    echo "$ELASTICSEARCH_S3_CLIENT_DEFAULT_SECRET_KEY" | /usr/share/elasticsearch/bin/elasticsearch-keystore add -f -s -x s3.client.default.secret_key
+    log_info "Upgrade keystore"
+    /usr/share/elasticsearch/bin/elasticsearch-keystore upgrade
+fi
+
+log_info "Start ElasticSearch ...\n"
 exec env ELASTIC_PASSWORD="$ELASTICSEARCH_PASSWORD" /usr/local/bin/docker-entrypoint.sh
