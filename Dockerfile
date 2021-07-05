@@ -1,4 +1,4 @@
-FROM library/elasticsearch:7.10.1
+FROM elasticsearch:7.10.1
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
