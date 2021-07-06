@@ -21,5 +21,9 @@ if [ -n "$ELASTICSEARCH_S3_CLIENT_DEFAULT_ACCESS_KEY" ] && [ -n "$ELASTICSEARCH_
     /usr/share/elasticsearch/bin/elasticsearch-keystore upgrade
 fi
 
+if [ "$ELASTICSEARCH_XPACK_SECURITY_ENABLED" != "true" ]; then
+    log_warn "XPACK security is disabled, don't use it in production"
+fi
+
 log_info "Start ElasticSearch ...\n"
 exec env ELASTIC_PASSWORD="$ELASTICSEARCH_PASSWORD" /usr/local/bin/docker-entrypoint.sh

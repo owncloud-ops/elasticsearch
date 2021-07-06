@@ -52,21 +52,27 @@ bootstrap:
 http:
   port: {{ getenv "ELASTICSEARCH_HTTP_PORT" "9200" }}
   compression: {{ getenv "ELASTICSEARCH_HTTP_COMPRESSION" "true" | conv.Bool }}
+{{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_ENABLED" "false" | conv.Bool) }}
 
 xpack:
   security:
-    enabled: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_ENABLED" "true" | conv.Bool }}
+    enabled: true
     transport:
       ssl:
         enabled: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_ENABLED" "false" | conv.Bool }}
+        {{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_ENABLED" "false" | conv.Bool) }}
         verification_mode: certificate
         client_authentication: required
         key: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_KEY" "node-key.pem" }}
         certificate: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE" "node.pem" }}
         certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE_AUTHORITIES" "root-ca.pem" }}
+        {{- end }}
     http:
       ssl:
         enabled: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_ENABLED" "false" | conv.Bool }}
+        {{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_ENABLED" "false" | conv.Bool) }}
         key: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_KEY" "node-key.pem" }}
         certificate: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE" "node.pem" }}
         certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE_AUTHORITIES" "root-ca.pem" }}
+        {{- end }}
+{{- end }}
