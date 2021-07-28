@@ -24,7 +24,7 @@ RUN yum install -y -q wget curl && \
     mkdir -p /usr/share/elasticsearch/backup && \
     chown -R elasticsearch:root /usr/share/elasticsearch/backup && \
     chmod 755 /usr/share/elasticsearch/backup && \
-    for PLUGIN in ${ELASTICSEARCH_PLUGINS}; do /usr/share/elasticsearch/bin/elasticsearch-plugin install "${PLUGIN}" || exit 1; done && \
+    for PLUGIN in ${ELASTICSEARCH_PLUGINS}; do /usr/share/elasticsearch/bin/elasticsearch-plugin install -s -b "${PLUGIN}" || exit 1; done && \
     yum clean all
 
 USER 1000
