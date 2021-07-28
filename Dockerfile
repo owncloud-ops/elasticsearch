@@ -8,6 +8,8 @@ LABEL org.opencontainers.image.source="https://github.com/owncloud-ops/elasticse
 LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ops/elasticsearch"
 
 ARG GOMPLATE_VERSION
+ARG ELASTICSEARCH_PLUGINS
+
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
 ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.9.0}"
@@ -22,7 +24,7 @@ RUN yum install -y -q wget curl && \
     mkdir -p /usr/share/elasticsearch/backup && \
     chown -R elasticsearch:root /usr/share/elasticsearch/backup && \
     chmod 755 /usr/share/elasticsearch/backup && \
-    /usr/share/elasticsearch/bin/elasticsearch-plugin install repository-s3 -b -s && \
+    for PLUGIN in ${ELASTICSEARCH_PLUGINS}; do /usr/share/elasticsearch/bin/elasticsearch-plugin install -s -b "${PLUGIN}" || exit 1; done && \
     yum clean all
 
 USER 1000

@@ -16,6 +16,11 @@ Custom Docker image for [ElasticSearch](https://github.com/elastic/elasticsearch
 - /usr/share/elasticsearch/backup
 - /usr/share/elasticsearch/log
 
+## Bundled Plugins
+
+- repository-s3
+- ingest-attachment
+
 ## Environment Variables
 
 ```Shell
