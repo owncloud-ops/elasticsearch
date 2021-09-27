@@ -12,7 +12,7 @@ ARG ELASTICSEARCH_PLUGINS
 
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
-ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.9.0}"
+ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.10.0}"
 
 ADD overlay/ /
 
