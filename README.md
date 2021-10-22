@@ -26,6 +26,8 @@ Custom Docker image for [ElasticSearch](https://github.com/elastic/elasticsearch
 ```Shell
 ELASTICSEARCH_CLUSTER_NAME=elasticsearch
 ELASTICSEARCH_CLUSTER_MODE=false
+# Enable this setting only to bootstrap a new cluster **not** for existing clusters.
+ELASTICSEARCH_CLUSTER_INIT=false
 # Comma-separated list
 ELASTICSEARCH_INITIAL_MASTER_NODES=elastic-node1
 ELASTICSEARCH_NODE_NAME=elastic-node1

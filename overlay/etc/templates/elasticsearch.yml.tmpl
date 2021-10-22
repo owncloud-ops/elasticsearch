@@ -1,6 +1,6 @@
 cluster:
   name: {{ getenv "ELASTICSEARCH_CLUSTER_NAME" "elasticsearch" }}
-  {{- if (getenv "ELASTICSEARCH_CLUSTER_MODE" "false" | conv.Bool) }}
+  {{- if and (getenv "ELASTICSEARCH_CLUSTER_MODE" "false" | conv.Bool) (getenv "ELASTICSEARCH_CLUSTER_INIT" "false" | conv.Bool) }}
   initial_master_nodes:
     {{- range (getenv "ELASTICSEARCH_INITIAL_MASTER_NODES" "elastic-node1" | strings.Split ",") }}
     - {{ . | strings.TrimSpace }}
