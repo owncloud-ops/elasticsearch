@@ -65,7 +65,9 @@ xpack:
         client_authentication: required
         key: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_KEY" "node-key.pem" }}
         certificate: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE" "node.pem" }}
-        certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE_AUTHORITIES" "root-ca.pem" }}
+        {{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE_AUTHORITIES" | conv.Bool) }}
+        certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_TRANSPORT_SSL_CERTIFICATE_AUTHORITIES" }}
+        {{- end }}
         {{- end }}
     http:
       ssl:
@@ -73,6 +75,8 @@ xpack:
         {{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_ENABLED" "false" | conv.Bool) }}
         key: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_KEY" "node-key.pem" }}
         certificate: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE" "node.pem" }}
-        certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE_AUTHORITIES" "root-ca.pem" }}
+        {{- if (getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE_AUTHORITIES" | conv.Bool) }}
+        certificate_authorities: {{ getenv "ELASTICSEARCH_XPACK_SECURITY_HTTP_SSL_CERTIFICATE_AUTHORITIES" }}
+        {{- end }}
         {{- end }}
 {{- end }}
