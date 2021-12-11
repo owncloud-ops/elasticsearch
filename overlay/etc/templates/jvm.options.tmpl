@@ -46,3 +46,8 @@
 
 # JDK 9+ GC logging
 9-:-Xlog:gc*,gc+age=trace,safepoint:file=logs/gc.log:utctime,pid,tags:filecount=32,filesize=64m
+
+# Extra JVM Options
+{{- range $element := (getenv "ELASTICSEARCH_JVM_EXTRA_OPTS" | strings.Split " ") }}
+{{ $element | strings.TrimSpace }}
+{{- end}}

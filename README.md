@@ -62,6 +62,10 @@ ELASTICSEARCH_JVM_HEAP_SIZE=512m
 
 ELASTICSEARCH_S3_CLIENT_DEFAULT_ACCESS_KEY=
 ELASTICSEARCH_S3_CLIENT_DEFAULT_SECRET_KEY=
+
+# Space-separated list of extra options to set for the Java JVM.
+# Example: ELASTICSEARCH_JVM_EXTRA_OPTS=-Djava.option1=foo -Djava.option2=bar
+ELASTICSEARCH_JVM_EXTRA_OPTS=
 ```
 
 ## Build
