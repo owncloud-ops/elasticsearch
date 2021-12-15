@@ -18,14 +18,15 @@ ADD overlay/ /
 
 USER 0
 
-RUN yum install -y -q wget curl && \
+RUN apt-get update && apt-get install -y wget curl && \
     curl -SsL -o /usr/local/bin/gomplate "https://github.com/hairyhenderson/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64-slim" && \
     chmod 755 /usr/local/bin/gomplate && \
     mkdir -p /usr/share/elasticsearch/backup && \
     chown -R elasticsearch:root /usr/share/elasticsearch/backup && \
     chmod 755 /usr/share/elasticsearch/backup && \
     for PLUGIN in ${ELASTICSEARCH_PLUGINS}; do /usr/share/elasticsearch/bin/elasticsearch-plugin install -s -b "${PLUGIN}" || exit 1; done && \
-    yum clean all
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 USER 1000
 
