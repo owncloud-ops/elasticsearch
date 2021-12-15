@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y wget curl && \
     mkdir -p /usr/share/elasticsearch/backup && \
     chown -R elasticsearch:root /usr/share/elasticsearch/backup && \
     chmod 755 /usr/share/elasticsearch/backup && \
+    chown -R elasticsearch:root /usr/share/elasticsearch/config && \
+    chmod 750 /usr/share/elasticsearch/config && \
     for PLUGIN in ${ELASTICSEARCH_PLUGINS}; do /usr/share/elasticsearch/bin/elasticsearch-plugin install -s -b "${PLUGIN}" || exit 1; done && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
