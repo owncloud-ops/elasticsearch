@@ -1,4 +1,4 @@
-FROM elasticsearch:7.16.1@sha256:8d5fd89230d7985b106bc0586080647a6650ca0f6dfe6c22541ef149045ad52e
+FROM elasticsearch:7.16.2@sha256:fe7ae76ec33e1222ece5216e3a9c6346999a73d3fb65256abb01638758db4b5d
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
