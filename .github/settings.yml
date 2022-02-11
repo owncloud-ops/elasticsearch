@@ -1,9 +1,9 @@
 ---
 repository:
   name: elasticsearch
-  description: Docker image for elasticsearch
+  description: Custom container image for ElasticSearch
   homepage: https://hub.docker.com/r/owncloudops/elasticsearch
-  topics: docker, elasticsearch
+  topics: oci, container, elasticsearch
 
   private: false
   has_issues: true
