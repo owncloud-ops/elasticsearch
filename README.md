@@ -3,7 +3,7 @@
 [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ops/elasticsearch/status.svg)](https://drone.owncloud.com/owncloud-ops/elasticsearch/)
 [![Docker Hub](https://img.shields.io/badge/docker-latest-blue.svg?logo=docker&logoColor=white)](https://hub.docker.com/r/owncloudops/elasticsearch)
 
-Custom Docker image for [ElasticSearch](https://github.com/elastic/elasticsearch/).
+Custom container image for [ElasticSearch](https://github.com/elastic/elasticsearch/).
 
 ## Ports
 
