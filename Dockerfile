@@ -13,7 +13,7 @@ ARG ELASTICSEARCH_PLUGINS
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
 ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.10.0}"
-# renovate: datasource=github-releases depName=owncloud-op/container-library
+# renovate: datasource=github-releases depName=owncloud-ops/container-library
 ENV CONTAINER_LIBRARY_VERSION="${CONTAINER_LIBRARY_VERSION:-v0.1.0}"
 
 ADD overlay/ /
