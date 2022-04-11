@@ -76,4 +76,4 @@ docker build -f Dockerfile -t elasticsearch:latest .
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/owncloud-ops/elasticsearch/blob/master/LICENSE) file for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/owncloud-ops/elasticsearch/blob/main/LICENSE) file for details.
