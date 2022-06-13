@@ -12,7 +12,7 @@ ARG CONTAINER_LIBRARY_VERSION
 ARG ELASTICSEARCH_PLUGINS
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
-ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.10.0}"
+ENV GOMPLATE_VERSION="${GOMPLATE_VERSION:-v3.11.0}"
 # renovate: datasource=github-releases depName=owncloud-ops/container-library
 ENV CONTAINER_LIBRARY_VERSION="${CONTAINER_LIBRARY_VERSION:-v0.1.0}"
 
@@ -21,7 +21,7 @@ ADD overlay/ /
 USER 0
 
 RUN apt-get update && apt-get install -y wget curl && \
-    curl -SsL -o /usr/local/bin/gomplate "https://github.com/hairyhenderson/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64-slim" && \
+    curl -SsL -o /usr/local/bin/gomplate "https://github.com/hairyhenderson/gomplate/releases/download/${gomplate_VERSION}/gomplate_linux-amd64" && \
     curl -SsL "https://github.com/owncloud-ops/container-library/releases/download/${CONTAINER_LIBRARY_VERSION}/container-library.tar.gz" | tar xz -C / && \
     chmod 755 /usr/local/bin/gomplate && \
     mkdir -p /usr/share/elasticsearch/backup && \
