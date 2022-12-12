@@ -1,4 +1,4 @@
-FROM amd64/elasticsearch:7.17.7@sha256:8ee5c469f80e39b6cf508b543b72dcd19e83f093099f542cf271fa3dff06d5ae
+FROM amd64/elasticsearch:7.17.8@sha256:d1b1c87fcd3e6039695f9e67052865ee85568d1be343e26326a6d3b73076b7c0
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
