@@ -2,6 +2,7 @@
 
 [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ops/elasticsearch/status.svg)](https://drone.owncloud.com/owncloud-ops/elasticsearch/)
 [![Docker Hub](https://img.shields.io/badge/docker-latest-blue.svg?logo=docker&logoColor=white)](https://hub.docker.com/r/owncloudops/elasticsearch)
+[![Quay.io](https://img.shields.io/badge/quay-latest-blue.svg?logo=docker&logoColor=white)](https://quay.io/repository/owncloudops/elasticsearch)
 
 Custom container image for [ElasticSearch](https://github.com/elastic/elasticsearch/).
 
