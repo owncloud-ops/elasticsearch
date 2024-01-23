@@ -1,4 +1,4 @@
-FROM docker.io/amd64/elasticsearch:7.17.16@sha256:07cfcad9c1a233b31bbb5cd7d431f4cb6f71b271885c28e649f60ec0fb50b521
+FROM docker.io/amd64/elasticsearch:7.17.17@sha256:16cacdeca49016d43a7d18f6fa519d098918246f5320f9a48274e7f345c7915c
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
